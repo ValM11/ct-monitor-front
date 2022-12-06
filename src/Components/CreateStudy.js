@@ -1,25 +1,29 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import { fetchNewStudy } from "../Services/ctm.services.js";
 
 export default function CreateStudy(props) {
+  let [newStudy, setNewStudy] = useState({});
+
+  useEffect(() => fetchNewStudy(newStudy), [newStudy]);
+
   return (
     <Form
       onSubmit={(event) => {
         event.preventDefault();
         var el = event.target.elements;
-        console.log(el.study.name);
-        console.log(el.study.value);
-        //   setNewSite({
-        //     sitename: sitename.value,
-        //     sitestreet: sitestreet.value,
-        //     sitecity: sitecity.value,
-        //   });
+        setNewStudy({
+          study_id: el.study.value,
+          product_id: el.product.value,
+          title: el.title.value,
+          start_date: el.start_date.value,
+        });
       }}
     >
       <Form.Group className="mb-3">
         <Form.Label>Study code</Form.Label>
-        <Form.Control type="text" key="study" name="study" required={true} />
+        <Form.Control type="text" name="study" required={true} />
         <Form.Text className="text-danger">Required field</Form.Text>
       </Form.Group>
       <Form.Group className="mb-3">
@@ -33,7 +37,7 @@ export default function CreateStudy(props) {
       </Form.Group>
       <Form.Group className="mb-3">
         <Form.Label>Start date</Form.Label>
-        <Form.Control type="date" name="start-date" />
+        <Form.Control type="date" name="start_date" />
       </Form.Group>
       <Button variant="outline-success" type="submit">
         Submit

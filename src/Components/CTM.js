@@ -4,6 +4,7 @@ import Card from "react-bootstrap/Card";
 import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import CreateStudy from "./CreateStudy.js";
+import UpdateStudy from "./UpdateStudy.js";
 
 export default function CTM(props) {
   var [ctmPage, setCtmPage] = useState("CTM Menu");
@@ -40,9 +41,9 @@ export default function CTM(props) {
   if (ctmPage === "CreateStudy") {
     return <CreateStudy setPage={setCtmPage} />;
   }
-  //   if (ctmPage === "UpdateStudy") {
-  //     return <UpdateStudy setPage={setCtmPage} />;
-  //   }
+  if (ctmPage === "UpdateStudy") {
+    return <UpdateStudy setPage={setCtmPage} />;
+  }
   //   if (ctmPage === "CreateInvestigator") {
   //     return <CreateInvestigator setPage={setCtmPage} />;
   //   }
