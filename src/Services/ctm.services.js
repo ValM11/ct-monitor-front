@@ -48,3 +48,18 @@ export function fetchStudyInfo(selectedStudy, setStudyInfos) {
       });
   }
 }
+
+export function fetchInvestigator(study, investigatorInfo) {
+  if (typeof study !== "undefined") {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(investigatorInfo),
+    };
+    console.log(study);
+    let url = baseUrl + "/add-investigator";
+    fetch(url, requestOptions)
+      .then((response) => response.text())
+      .then((data) => console.log(data));
+  }
+}

@@ -5,14 +5,14 @@ import Col from "react-bootstrap/Col";
 import Row from "react-bootstrap/Row";
 import CreateStudy from "./CreateStudy.js";
 import UpdateStudy from "./UpdateStudy.js";
-import CreateInvestigator from "./UpdateStudy.js";
+import AddInvestigator from "./AddInvestigator.js";
 
 export default function CTM(props) {
   var [ctmPage, setCtmPage] = useState("CTM Menu");
   var CTMOptions = {
     CreateStudy: "Create study",
     UpdateStudy: "Update study information",
-    AddInvetsigator: "Add Site/Investigator",
+    AddInvestigator: "Add Site/Investigator",
     DeleteSite: "Delete site",
   };
   if (ctmPage === "CTM Menu") {
@@ -45,8 +45,8 @@ export default function CTM(props) {
   if (ctmPage === "UpdateStudy") {
     return <UpdateStudy setPage={setCtmPage} />;
   }
-  if (ctmPage === "CreateInvestigator") {
-    return <CreateInvestigator setPage={setCtmPage} />;
+  if (ctmPage === "AddInvestigator") {
+    return <AddInvestigator setPage={setCtmPage} />;
   }
   //   if (ctmPage === "DeleteSite") {
   //     return <DeleteSite setPage={setCtmPage} />;
