@@ -15,33 +15,36 @@ export function fetchNewStudy(study) {
 }
 
 export function fetchUpdateStudy(study, updatedStudy) {
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(updatedStudy),
-  };
-  let url = baseUrl + "/update-study/" + study;
-  fetch(url, requestOptions)
-    .then((response) => response.text())
-    .then((data) => console.log(data));
+  if (typeof study[0] !== "undefined") {
+    const requestOptions = {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedStudy),
+    };
+    console.log(study);
+    let url = baseUrl + "/update-study/" + study[0].study_id;
+    fetch(url, requestOptions)
+      .then((response) => response.text())
+      .then((data) => console.log(data));
+  }
 }
 
-export function fetchStudies(setStudyList) {
+export function fetchStudies(setStudies) {
   let url = baseUrl + "/studies-codes";
   fetch(url)
     .then((response) => response.json())
     .then((data) => {
-      setStudyList(data);
+      setStudies(data);
     });
 }
 
-export function fetchStudyInfo(selectedStudy, selectedSite, setSiteInfos) {
+export function fetchStudyInfo(selectedStudy, setStudyInfos) {
   if (selectedStudy !== "") {
-    let url = (url = baseUrl + "/study-info/" + selectedSite);
+    let url = baseUrl + "/study-info/" + selectedStudy;
     fetch(url)
       .then((response) => response.json())
       .then((data) => {
-        setSiteInfos(data);
+        setStudyInfos(data);
       });
   }
 }

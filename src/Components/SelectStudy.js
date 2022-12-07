@@ -5,7 +5,7 @@ import { fetchStudies } from "../Services/ctm.services.js";
 export default function SelectStudy(props) {
   let [studiesList, setStudiesList] = useState([]);
 
-  useEffect(() => fetchStudies(setStudiesList));
+  useEffect(() => fetchStudies(setStudiesList), []);
 
   return (
     <ListGroup>
@@ -15,9 +15,11 @@ export default function SelectStudy(props) {
           action
           variant="info"
           value={study.study_id}
-          onClick={() => props.setStudy(Event.target.value)}
+          onClick={(event) => {
+            props.setStudy(event.target.value);
+          }}
         >
-          {study.study_id} / {study.product_id}
+          {study.study_id} / {study.product_id} /{study.start_date}
         </ListGroup.Item>
       ))}
     </ListGroup>
