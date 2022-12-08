@@ -6,6 +6,7 @@ import Row from "react-bootstrap/Row";
 import CreateStudy from "./CreateStudy.js";
 import UpdateStudy from "./UpdateStudy.js";
 import AddInvestigator from "./AddInvestigator.js";
+import NavBarMenu from "./NavBarMenu.js";
 
 export default function CTM(props) {
   var [ctmPage, setCtmPage] = useState("CTM Menu");
@@ -40,13 +41,28 @@ export default function CTM(props) {
     );
   }
   if (ctmPage === "CreateStudy") {
-    return <CreateStudy setPage={setCtmPage} />;
+    return (
+      <Container>
+        <NavBarMenu setPage={setCtmPage} page="CTM Menu" />
+        <CreateStudy setPage={setCtmPage} />
+      </Container>
+    );
   }
   if (ctmPage === "UpdateStudy") {
-    return <UpdateStudy setPage={setCtmPage} />;
+    return (
+      <Container>
+        <NavBarMenu setPage={setCtmPage} page="CTM Menu" />
+        <UpdateStudy setPage={setCtmPage} />
+      </Container>
+    );
   }
   if (ctmPage === "AddInvestigator") {
-    return <AddInvestigator setPage={setCtmPage} />;
+    return (
+      <Container>
+        <NavBarMenu setPage={setCtmPage} page="CTM Menu" />
+        <AddInvestigator setPage={setCtmPage} />
+      </Container>
+    );
   }
   //   if (ctmPage === "DeleteSite") {
   //     return <DeleteSite setPage={setCtmPage} />;

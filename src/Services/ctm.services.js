@@ -63,3 +63,17 @@ export function fetchInvestigator(study, investigatorInfo) {
       .then((data) => console.log(data));
   }
 }
+
+export function fetchCheckUser(userCredentials, setPage) {
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(userCredentials),
+  };
+  let url = baseUrl + "/check-user";
+  fetch(url, requestOptions)
+    .then((response) => response.text())
+    .then((data) => {
+      setPage(JSON.parse(data).user_role);
+    });
+}

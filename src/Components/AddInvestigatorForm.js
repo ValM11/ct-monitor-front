@@ -18,7 +18,7 @@ export default function AddInvestigatorForm(props) {
           event.preventDefault();
           var el = event.target.elements;
           setInvestigator({
-            inv_name: el.name.value,
+            inv_name: el.inv_name.value,
             email: el.email.value,
             site_id: el.site_id.value,
             country_id: el.country_id.value,
@@ -38,14 +38,14 @@ export default function AddInvestigatorForm(props) {
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Associated site number</Form.Label>
-          <Form.Control type="text" name="site_id" required={true} />
+          <Form.Control type="number" name="site_id" required={true} />
           <Form.Text className="text-danger">
             Required field - 3 digits
           </Form.Text>
         </Form.Group>
         <Form.Group className="mb-3">
           <Form.Label>Associated country number</Form.Label>
-          <Form.Control type="text" name="country_id" required={true} />
+          <Form.Control type="number" name="country_id" required={true} />
           <Form.Text className="text-danger">
             Required field - 3 digits
           </Form.Text>

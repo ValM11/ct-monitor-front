@@ -2,9 +2,11 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
+import { fetchCheckUser } from "../Services/ctm.services.js";
 
-export default function Homepage() {
+export default function Homepage(props) {
   var [showSignIn, setShow] = useState(false);
+
   return (
     <div>
       <div className="text-center">
@@ -26,29 +28,40 @@ export default function Homepage() {
             <Modal.Title>Sign in</Modal.Title>
           </Modal.Header>
           <Modal.Body>
-            <Form>
+            <Form
+              onSubmit={(event) => {
+                event.preventDefault();
+                var el = event.target.elements;
+                fetchCheckUser({ email: el.email.value }, props.setPage);
+                setShow(false);
+              }}
+            >
               <Form.Group className="mb-3">
                 <Form.Label>Email address</Form.Label>
                 <Form.Control
                   type="email"
+                  name="email"
                   placeholder="name@example.com"
                   autoFocus
                 />
               </Form.Group>
               <Form.Group className="mb-3">
                 <Form.Label>Password</Form.Label>
-                <Form.Control type="password" />
+                <Form.Control type="password" name="password" />
               </Form.Group>
+              <Button variant="outline-success" type="submit">
+                Sign in
+              </Button>
             </Form>
           </Modal.Body>
-          <Modal.Footer>
+          {/* <Modal.Footer>
             <Button variant="secondary" onClick={() => setShow(false)}>
               Close
             </Button>
-            <Button variant="primary" onClick={() => setShow(false)}>
+            <Button variant="primary" type="submit">
               Sign In
             </Button>
-          </Modal.Footer>
+          </Modal.Footer> */}
         </Modal>
       </div>
     </div>
