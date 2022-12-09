@@ -2,9 +2,10 @@ var baseUrl = "http://localhost:3001";
 
 export function fetchNewStudy(study) {
   if (Object.keys(study).length !== 0) {
+    var token = JSON.parse(localStorage.getItem("tokenRole"));
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { ...{ "Content-Type": "application/json" }, ...token },
       body: JSON.stringify(study),
     };
     let url = baseUrl + "/create-study";
@@ -16,13 +17,15 @@ export function fetchNewStudy(study) {
 
 export function fetchUpdateStudy(study, updatedStudy) {
   if (typeof study[0] !== "undefined") {
+    var token = JSON.parse(localStorage.getItem("tokenRole"));
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { ...{ "Content-Type": "application/json" }, ...token },
       body: JSON.stringify(updatedStudy),
     };
     console.log(study);
     let url = baseUrl + "/update-study/" + study[0].study_id;
+    console.log(url);
     fetch(url, requestOptions)
       .then((response) => response.text())
       .then((data) => console.log(data));
@@ -30,8 +33,13 @@ export function fetchUpdateStudy(study, updatedStudy) {
 }
 
 export function fetchStudies(setStudies) {
+  var token = JSON.parse(localStorage.getItem("tokenRole"));
+  const requestOptions = {
+    method: "GET",
+    headers: { ...{ "Content-Type": "application/json" }, ...token },
+  };
   let url = baseUrl + "/studies-codes";
-  fetch(url)
+  fetch(url, requestOptions)
     .then((response) => response.json())
     .then((data) => {
       setStudies(data);
@@ -40,8 +48,13 @@ export function fetchStudies(setStudies) {
 
 export function fetchStudyInfo(selectedStudy, setStudyInfos) {
   if (selectedStudy !== "") {
+    var token = JSON.parse(localStorage.getItem("tokenRole"));
+    const requestOptions = {
+      method: "GET",
+      headers: { ...{ "Content-Type": "application/json" }, ...token },
+    };
     let url = baseUrl + "/study-info/" + selectedStudy;
-    fetch(url)
+    fetch(url, requestOptions)
       .then((response) => response.json())
       .then((data) => {
         setStudyInfos(data);
@@ -51,9 +64,10 @@ export function fetchStudyInfo(selectedStudy, setStudyInfos) {
 
 export function fetchInvestigator(study, investigatorInfo) {
   if (typeof study !== "undefined") {
+    var token = JSON.parse(localStorage.getItem("tokenRole"));
     const requestOptions = {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
+      headers: { ...{ "Content-Type": "application/json" }, ...token },
       body: JSON.stringify(investigatorInfo),
     };
     console.log(study);
@@ -70,10 +84,11 @@ export function fetchCheckUser(userCredentials, setPage) {
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(userCredentials),
   };
-  let url = baseUrl + "/check-user";
+  let url = baseUrl + "/check-user-role";
   fetch(url, requestOptions)
     .then((response) => response.text())
     .then((data) => {
+      localStorage.setItem("tokenRole", data);
       setPage(JSON.parse(data).user_role);
     });
 }

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Modal from "react-bootstrap/Modal";
-import { fetchCheckUser } from "../Services/ctm.services.js";
+import { fetchCheckUser } from "../Services/global.services.js";
 
 export default function Homepage(props) {
   var [showSignIn, setShow] = useState(false);
@@ -32,7 +32,10 @@ export default function Homepage(props) {
               onSubmit={(event) => {
                 event.preventDefault();
                 var el = event.target.elements;
-                fetchCheckUser({ email: el.email.value }, props.setPage);
+                fetchCheckUser(
+                  { email: el.email.value, passhash: el.password.value },
+                  props.setPage
+                );
                 setShow(false);
               }}
             >
