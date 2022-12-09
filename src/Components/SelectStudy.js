@@ -19,7 +19,7 @@ export default function SelectStudy(props) {
             props.setStudy(event.target.value);
           }}
         >
-          {study.study_id} / {study.product_id} /{study.start_date}
+          {study.study_id} / {study.product_id} / {study.start_date}
         </ListGroup.Item>
       ))}
     </ListGroup>

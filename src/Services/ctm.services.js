@@ -63,32 +63,16 @@ export function fetchStudyInfo(selectedStudy, setStudyInfos) {
 }
 
 export function fetchInvestigator(study, investigatorInfo) {
-  if (typeof study !== "undefined") {
+  if (typeof study[0] !== "undefined") {
     var token = JSON.parse(localStorage.getItem("tokenRole"));
     const requestOptions = {
       method: "POST",
       headers: { ...{ "Content-Type": "application/json" }, ...token },
       body: JSON.stringify(investigatorInfo),
     };
-    console.log(study);
     let url = baseUrl + "/add-investigator";
     fetch(url, requestOptions)
       .then((response) => response.text())
       .then((data) => console.log(data));
   }
-}
-
-export function fetchCheckUser(userCredentials, setPage) {
-  const requestOptions = {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify(userCredentials),
-  };
-  let url = baseUrl + "/check-user-role";
-  fetch(url, requestOptions)
-    .then((response) => response.text())
-    .then((data) => {
-      localStorage.setItem("tokenRole", data);
-      setPage(JSON.parse(data).user_role);
-    });
 }

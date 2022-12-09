@@ -15,6 +15,7 @@ export default function UpdateStudy(props) {
 
   return (
     <Container>
+      <h2>Update study</h2>
       <SelectStudy setStudy={setSelectedStudy} />
       <br></br>
       <UpdateStudyForm study={studyInfos} />

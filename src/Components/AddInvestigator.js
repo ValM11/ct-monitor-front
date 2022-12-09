@@ -4,7 +4,7 @@ import SelectStudy from "./SelectStudy.js";
 import AddInvestigatorForm from "./AddInvestigatorForm.js";
 // import { fetchStudyInfo } from "../Services/ctm.services.js";
 
-export default function UpdateStudy(props) {
+export default function UpdateAddInvetsigator(props) {
   let [selectedStudy, setSelectedStudy] = useState("");
   //   let [studyInfos, setStudyInfos] = useState({});
 
@@ -15,6 +15,7 @@ export default function UpdateStudy(props) {
 
   return (
     <Container>
+      <h2>Add investigator</h2>
       <SelectStudy setStudy={setSelectedStudy} />
       <br></br>
       <AddInvestigatorForm study={selectedStudy} />

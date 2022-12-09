@@ -19,7 +19,7 @@ export default function UpdateStudyForm(props) {
           var el = event.target.elements;
           setUpdatedStudy({
             title: el.title.value,
-            start_date: el.start_date.value,
+            start_date: new Date(el.start_date.value),
             end_date: el.end_date.value,
           });
         }}
