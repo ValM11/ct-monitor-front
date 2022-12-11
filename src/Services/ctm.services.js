@@ -1,6 +1,6 @@
 var baseUrl = "http://localhost:3001";
 
-export function fetchNewStudy(study) {
+export function fetchNewStudy(study, setMessage) {
   if (Object.keys(study).length !== 0) {
     var token = JSON.parse(localStorage.getItem("tokenRole"));
     const requestOptions = {
@@ -10,8 +10,13 @@ export function fetchNewStudy(study) {
     };
     let url = baseUrl + "/create-study";
     fetch(url, requestOptions)
-      .then((response) => response.text())
-      .then((data) => console.log(data));
+      .then((response) => {
+        response.json();
+      })
+      .then((data) => {
+        setMessage({ success: "New study uploaded" });
+      })
+      .catch((err) => setMessage({ error: err.message }));
   }
 }
 
@@ -25,7 +30,6 @@ export function fetchUpdateStudy(study, updatedStudy) {
     };
     console.log(study);
     let url = baseUrl + "/update-study/" + study[0].study_id;
-    console.log(url);
     fetch(url, requestOptions)
       .then((response) => response.text())
       .then((data) => console.log(data));
@@ -34,6 +38,7 @@ export function fetchUpdateStudy(study, updatedStudy) {
 
 export function fetchStudies(setStudies) {
   var token = JSON.parse(localStorage.getItem("tokenRole"));
+  console.log(token);
   const requestOptions = {
     method: "GET",
     headers: { ...{ "Content-Type": "application/json" }, ...token },
@@ -72,7 +77,7 @@ export function fetchInvestigator(study, investigatorInfo) {
     };
     let url = baseUrl + "/add-investigator";
     fetch(url, requestOptions)
-      .then((response) => response.text())
+      .then((response) => response.json())
       .then((data) => console.log(data));
   }
 }

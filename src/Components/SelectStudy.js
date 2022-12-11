@@ -8,12 +8,13 @@ export default function SelectStudy(props) {
   useEffect(() => fetchStudies(setStudiesList), []);
 
   return (
-    <ListGroup>
-      <ListGroup.Item>Please select a study</ListGroup.Item>
+    <ListGroup className="listGroup" variant="flush">
+      <ListGroup.Item variant="info">
+        Please select a study<br></br>StudyID / ProductID / Start date
+      </ListGroup.Item>
       {studiesList.map((study) => (
         <ListGroup.Item
           action
-          variant="info"
           value={study.study_id}
           onClick={(event) => {
             props.setStudy(event.target.value);

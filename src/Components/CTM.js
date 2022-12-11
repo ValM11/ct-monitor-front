@@ -22,10 +22,12 @@ export default function CTM(props) {
       <Container>
         <NavBarWelcome setPage={props.setPage} />
         <h2>Welcome to CTM portal</h2>
-        <Row xs={1} md={2} className="g-4">
+        <Row xs={1} md={3} className="g-4">
           {Array.from({ length: 4 }).map((_, idx) => (
             <Col>
               <Card
+                centered
+                style={{ width: "20rem" }}
                 border="primary"
                 onClick={() => {
                   setCtmPage(Object.keys(CTMOptions)[idx]);
@@ -49,7 +51,11 @@ export default function CTM(props) {
   if (ctmPage === "CreateStudy") {
     return (
       <Container>
-        <NavBarMenu setPage={setCtmPage} page="CTM Menu" />
+        <NavBarMenu
+          setPageMenu={setCtmPage}
+          setPageHome={props.setPage}
+          page="CTM Menu"
+        />
         <CreateStudy setPage={setCtmPage} />
       </Container>
     );
@@ -57,7 +63,11 @@ export default function CTM(props) {
   if (ctmPage === "UpdateStudy") {
     return (
       <Container>
-        <NavBarMenu setPage={setCtmPage} page="CTM Menu" />
+        <NavBarMenu
+          setPageMenu={setCtmPage}
+          setPageHome={props.setPage}
+          page="CTM Menu"
+        />
         <UpdateStudy setPage={setCtmPage} />
       </Container>
     );
@@ -65,7 +75,11 @@ export default function CTM(props) {
   if (ctmPage === "AddInvestigator") {
     return (
       <Container>
-        <NavBarMenu setPage={setCtmPage} page="CTM Menu" />
+        <NavBarMenu
+          setPageMenu={setCtmPage}
+          setPageHome={props.setPage}
+          page="CTM Menu"
+        />
         <AddInvestigator setPage={setCtmPage} />
       </Container>
     );

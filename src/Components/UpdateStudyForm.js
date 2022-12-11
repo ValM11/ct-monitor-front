@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
 import { fetchUpdateStudy } from "../Services/ctm.services.js";
 
 export default function UpdateStudyForm(props) {
@@ -24,14 +26,20 @@ export default function UpdateStudyForm(props) {
           });
         }}
       >
-        <Form.Group className="mb-3">
-          <Form.Label>Study code</Form.Label>
-          <Form.Control placeholder={props.study[0].study_id} disabled />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Associated product code</Form.Label>
-          <Form.Control placeholder={props.study[0].product_id} disabled />
-        </Form.Group>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Label>Study code</Form.Label>
+              <Form.Control placeholder={props.study[0].study_id} disabled />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Label>Associated product code</Form.Label>
+              <Form.Control placeholder={props.study[0].product_id} disabled />
+            </Form.Group>
+          </Col>
+        </Row>
         <Form.Group className="mb-3">
           <Form.Label>Study title</Form.Label>
           <Form.Control
@@ -40,18 +48,26 @@ export default function UpdateStudyForm(props) {
             name="title"
           />
         </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>Start date</Form.Label>
-          <Form.Control
-            placeholder={props.study[0].start_date}
-            type="date"
-            name="start_date"
-          />
-        </Form.Group>
-        <Form.Group className="mb-3">
-          <Form.Label>End date</Form.Label>
-          <Form.Control type="date" name="end_date" />
-        </Form.Group>
+        <Row>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Label>Start date</Form.Label>
+              <Form.Control
+                placeholder={props.study[0].start_date}
+                type="text"
+                name="start_date"
+                onFocus={(e) => (e.currentTarget.type = "date")}
+                onBlur={(e) => (e.currentTarget.type = "text")}
+              />
+            </Form.Group>
+          </Col>
+          <Col>
+            <Form.Group className="mb-3">
+              <Form.Label>End date</Form.Label>
+              <Form.Control type="date" name="end_date" />
+            </Form.Group>
+          </Col>
+        </Row>
         <Button variant="outline-success" type="submit">
           Submit
         </Button>
