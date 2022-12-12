@@ -38,7 +38,6 @@ export function fetchUpdateStudy(study, updatedStudy) {
 
 export function fetchStudies(setStudies) {
   var token = JSON.parse(localStorage.getItem("tokenRole"));
-  console.log(token);
   const requestOptions = {
     method: "GET",
     headers: { ...{ "Content-Type": "application/json" }, ...token },

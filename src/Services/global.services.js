@@ -7,19 +7,10 @@ export function fetchCheckUser(userCredentials, setPage) {
     body: JSON.stringify(userCredentials),
   };
   let url = baseUrl + "/check-user-role";
-  fetch(url, requestOptions)
-    .then((response) => {
-      if (response.ok) {
-        return response.text();
-      }
-      throw new Error(response.json());
-    })
-    .then((data) => {
-      localStorage.setItem("tokenRole", data);
-      setPage(JSON.parse(data).user_role);
-    })
-    .catch((err) => {
-      console.log(err);
-      setPage("Homepage");
-    });
+  return fetch(url, requestOptions).then((response) => {
+    if (response.ok) {
+      return response.json();
+    }
+    throw new Error(response.statusText);
+  });
 }

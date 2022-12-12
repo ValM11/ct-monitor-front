@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import Container from "react-bootstrap/Container";
-import SelectStudy from "./SelectStudy.js";
+import SelectStudy from "../GlobalPages/SelectStudy.js";
 import AddInvestigatorForm from "./AddInvestigatorForm.js";
 // import { fetchStudyInfo } from "../Services/ctm.services.js";
 

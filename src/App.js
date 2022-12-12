@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 // import logo from './logo.svg';
 import "./App.css";
-import Homepage from "./Components/Homepage.js";
-import CTM from "./Components/CTM.js";
-import Investigator from "./Components/Investigator.js";
-import Contact from "./Components/Contact.js";
+import Homepage from "./Components/GlobalPages/Homepage.js";
+import CTM from "./Components/CTMPages/CTM.js";
+import Investigator from "./Components/InvestigatorPages/Investigator.js";
+import Contact from "./Components/GlobalPages/Contact.js";
 
 function App() {
   const [currentPage, setCurrentPage] = useState("Homepage");

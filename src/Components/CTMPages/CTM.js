@@ -6,7 +6,7 @@ import Row from "react-bootstrap/Row";
 import CreateStudy from "./CreateStudy.js";
 import UpdateStudy from "./UpdateStudy.js";
 import AddInvestigator from "./AddInvestigator.js";
-import NavBarWelcome from "./NavBarWelcome.js";
+import NavBarWelcome from "../GlobalPages/NavBarWelcome.js";
 import NavBarMenu from "./NavBarMenu.js";
 
 export default function CTM(props) {

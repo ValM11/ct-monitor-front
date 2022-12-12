@@ -4,8 +4,8 @@ import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import AlertMessage from "./AlertMessage.js";
-import { fetchNewStudy } from "../Services/ctm.services.js";
+import AlertMessage from "../GlobalPages/AlertMessage.js";
+import { fetchNewStudy } from "../../Services/ctm.services.js";
 
 export default function CreateStudy(props) {
   let [newStudy, setNewStudy] = useState({});
@@ -66,7 +66,7 @@ export default function CreateStudy(props) {
         </Button>
       </Form>
       <br></br>
-      <AlertMessage message={submitMessage} />
+      {/* <AlertMessage message={submitMessage} /> */}
     </Container>
   );
 }
