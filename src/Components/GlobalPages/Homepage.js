@@ -19,6 +19,7 @@ export default function Homepage(props) {
     )
       .then((data) => {
         localStorage.setItem("tokenRole", JSON.stringify(data));
+        localStorage.setItem("userEmail", el.email.value);
         props.setPage(data.user_role);
         setShow(false);
       })

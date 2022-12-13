@@ -1,18 +1,20 @@
 var baseUrl = "http://localhost:3001";
 
-export function fetchInvStudies(inv, setInvStudies) {
+export function fetchInvStudies(invEmail, setStudies) {
   var token = JSON.parse(localStorage.getItem("tokenRole"));
   const requestOptions = {
     method: "GET",
-    headers: { ...{ "Content-Type": "application/json" }, ...token },
+    headers: {
+      ...{ "Content-Type": "application/json" },
+      ...token,
+      ...{ inv: invEmail },
+    },
   };
-  let url = baseUrl + "/studies-inv/" + inv;
+  let url = baseUrl + "/studies-inv";
   fetch(url, requestOptions)
-    .then((response) => {
-      response.json();
-    })
+    .then((response) => response.json())
     .then((data) => {
-      setInvStudies(data);
+      setStudies(data);
     });
 }
 

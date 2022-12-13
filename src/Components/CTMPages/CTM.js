@@ -7,7 +7,7 @@ import CreateStudy from "./CreateStudy.js";
 import UpdateStudy from "./UpdateStudy.js";
 import AddInvestigator from "./AddInvestigator.js";
 import NavBarWelcome from "../GlobalPages/NavBarWelcome.js";
-import NavBarMenu from "./NavBarMenu.js";
+import NavBarMenu from "../GlobalPages/NavBarMenu.js";
 
 export default function CTM(props) {
   var [ctmPage, setCtmPage] = useState("CTM Menu");
