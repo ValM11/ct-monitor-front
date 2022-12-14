@@ -1,12 +1,21 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Container from "react-bootstrap/Container";
 import Form from "react-bootstrap/Form";
 import Button from "react-bootstrap/esm/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import { fetchAddPatientInfo } from "../../Services/inv.services.js";
+import {
+  fetchAddPatientInfo,
+  fetchInvestigatorInfo,
+} from "../../Services/inv.services.js";
 
 export default function AddPatient(props) {
+  let invEmail = localStorage.getItem("userEmail");
+
+  let [invInfos, setInvInfos] = useState([]);
+
+  useEffect(() => fetchInvestigatorInfo(invEmail, setInvInfos), [invEmail]);
+
   return (
     <Container>
       <Form
@@ -14,8 +23,9 @@ export default function AddPatient(props) {
           event.preventDefault();
           var el = event.target.elements;
           fetchAddPatientInfo("link_patient_study", {
-            study_id: el.study_id.value,
-            patient_id: el.patient_id.value,
+            patient_id: Number(el.patient_id.value),
+            site_id: invInfos[0].site_id,
+            study_id: props.study,
           });
         }}
       >

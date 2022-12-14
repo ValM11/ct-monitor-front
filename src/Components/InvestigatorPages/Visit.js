@@ -6,7 +6,7 @@ export default function Visit(props) {
   return (
     <Accordion>
       {props.pages.map((page) => (
-        <Accordion.Item eventKey={page}>
+        <Accordion.Item key={page} eventKey={page}>
           <Accordion.Header>{page}</Accordion.Header>
           <Accordion.Body>
             <CreateComponent

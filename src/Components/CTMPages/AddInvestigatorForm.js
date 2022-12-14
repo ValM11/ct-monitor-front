@@ -22,8 +22,8 @@ export default function AddInvestigatorForm(props) {
           setInvestigator({
             inv_name: el.inv_name.value,
             email: el.email.value,
-            site_id: el.site_id.value,
-            country_id: el.country_id.value,
+            site_id: Number(el.site_id.value),
+            country_id: Number(el.country_id.value),
             study_id: props.study,
           });
         }}

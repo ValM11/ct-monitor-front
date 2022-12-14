@@ -11,15 +11,16 @@ import {
 
 export default function Demo(props) {
   let [DemoInfo, setDemoInfo] = useState({});
-  let patientInfo = {};
 
-  useEffect(() =>
-    fetchPatientVisit(
-      "demographics",
-      props.currentPatient,
-      props.currentVisit,
-      setDemoInfo
-    )
+  useEffect(
+    () =>
+      fetchPatientVisit(
+        "demographics",
+        props.currentPatient,
+        props.currentVisit,
+        setDemoInfo
+      ),
+    [props.currentPatient, props.currentVisit]
   );
 
   return (
@@ -27,7 +28,15 @@ export default function Demo(props) {
       <Form
         onSubmit={(event) => {
           event.preventDefault();
-          fetchAddPatientInfo("demographics", patientInfo);
+          var el = event.target.elements;
+          fetchAddPatientInfo("demographics", {
+            patient_id: Number(props.currentPatient),
+            visit: props.currentVisit,
+            sex: el.sex.value,
+            age: Number(el.age.value),
+            weight: Number(el.weight.value),
+            height: Number(el.height.value),
+          });
         }}
       >
         <Row>
@@ -56,13 +65,21 @@ export default function Demo(props) {
           <Col>
             <Form.Group className="mb-3">
               <Form.Label>Weight (kg)</Form.Label>
-              <Form.Control placeholder="62" type="number" name="weight" />
+              <Form.Control
+                placeholder={DemoInfo.weight}
+                type="number"
+                name="weight"
+              />
             </Form.Group>
           </Col>
           <Col>
             <Form.Group className="mb-3">
               <Form.Label>Height (cm)</Form.Label>
-              <Form.Control placeholder="178" type="number" name="height" />
+              <Form.Control
+                placeholder={DemoInfo.height}
+                type="number"
+                name="height"
+              />
             </Form.Group>
           </Col>
         </Row>

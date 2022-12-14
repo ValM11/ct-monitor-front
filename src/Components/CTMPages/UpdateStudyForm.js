@@ -20,9 +20,11 @@ export default function UpdateStudyForm(props) {
           event.preventDefault();
           var el = event.target.elements;
           setUpdatedStudy({
-            title: el.title.value,
-            start_date: new Date(el.start_date.value),
-            end_date: el.end_date.value,
+            ...(!el.title.value ? {} : { title: el.title.value }),
+            ...(!el.start_date.value
+              ? {}
+              : { start_date: el.start_date.value }),
+            ...(!el.end_date.value ? {} : { end_date: el.end_date.value }),
           });
         }}
       >
@@ -64,7 +66,13 @@ export default function UpdateStudyForm(props) {
           <Col>
             <Form.Group className="mb-3">
               <Form.Label>End date</Form.Label>
-              <Form.Control type="date" name="end_date" />
+              <Form.Control
+                placeholder={props.study[0].end_date}
+                type="text"
+                name="end_date"
+                onFocus={(e) => (e.currentTarget.type = "date")}
+                onBlur={(e) => (e.currentTarget.type = "text")}
+              />
             </Form.Group>
           </Col>
         </Row>

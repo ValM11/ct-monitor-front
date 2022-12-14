@@ -15,7 +15,7 @@ export default function CTM(props) {
     CreateStudy: "Create study",
     UpdateStudy: "Update study information",
     AddInvestigator: "Add Site/Investigator",
-    DeleteSite: "Delete site",
+    // DeleteSite: "Delete site",
   };
   if (ctmPage === "CTM Menu") {
     return (
@@ -26,7 +26,7 @@ export default function CTM(props) {
           {Array.from({ length: 4 }).map((_, idx) => (
             <Col>
               <Card
-                centered
+                key={idx}
                 style={{ width: "20rem" }}
                 border="primary"
                 onClick={() => {

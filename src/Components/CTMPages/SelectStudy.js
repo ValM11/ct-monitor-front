@@ -9,11 +9,12 @@ export default function SelectStudy(props) {
 
   return (
     <ListGroup className="listGroup" variant="flush">
-      <ListGroup.Item variant="info">
+      <ListGroup.Item key="title" variant="info">
         Please select a study<br></br>StudyID / ProductID / Start date
       </ListGroup.Item>
       {studiesList.map((study) => (
         <ListGroup.Item
+          key={study.study_id}
           action
           value={study.study_id}
           onClick={(event) => {

@@ -18,6 +18,24 @@ export function fetchInvStudies(invEmail, setStudies) {
     });
 }
 
+export function fetchInvestigatorInfo(invEmail, setInv) {
+  var token = JSON.parse(localStorage.getItem("tokenRole"));
+  const requestOptions = {
+    method: "GET",
+    headers: {
+      ...{ "Content-Type": "application/json" },
+      ...token,
+      ...{ inv: invEmail },
+    },
+  };
+  let url = baseUrl + "/inv-info";
+  fetch(url, requestOptions)
+    .then((response) => response.json())
+    .then((data) => {
+      setInv(data);
+    });
+}
+
 export function fetchStudyPatients(study, inv, setStudyPatients) {
   var token = JSON.parse(localStorage.getItem("tokenRole"));
   const requestOptions = {
@@ -48,12 +66,13 @@ export function fetchPatientVisit(table, patient, visit, setPatientVisit) {
 
 export function fetchAddPatientInfo(table, patientInfo) {
   var token = JSON.parse(localStorage.getItem("tokenRole"));
+  console.log(patientInfo);
   const requestOptions = {
     method: "POST",
     headers: { ...{ "Content-Type": "application/json" }, ...token },
     body: JSON.stringify(patientInfo),
   };
-  let url = baseUrl + "add-patient-info/" + table;
+  let url = baseUrl + "/add-patient-info/" + table;
   fetch(url, requestOptions)
     .then((response) => {
       if (response.ok) {

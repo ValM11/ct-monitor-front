@@ -13,7 +13,7 @@ export default function CompleteCRF(props) {
     () => fetchStudyPatients(props.study, props.connectedInv, setPatientsList),
     [props.study, props.connectedInv]
   );
-  console.log(selectedPatient);
+
   return (
     <Container>
       <DropdownButton
@@ -22,7 +22,7 @@ export default function CompleteCRF(props) {
       >
         {patientsList.map((patient) => (
           <Dropdown.Item
-            eventKey={patient.patient_id}
+            key={patient.patient_id}
             onClick={(event) => {
               event.preventDefault();
               console.log(event);
