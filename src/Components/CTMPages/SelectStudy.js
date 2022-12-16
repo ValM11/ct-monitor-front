@@ -17,6 +17,7 @@ export default function SelectStudy(props) {
           key={study.study_id}
           action
           value={study.study_id}
+          variant="warning"
           onClick={(event) => {
             props.setStudy(event.target.value);
           }}

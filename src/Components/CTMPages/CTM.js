@@ -23,7 +23,7 @@ export default function CTM(props) {
         <NavBarWelcome setPage={props.setPage} />
         <h2>Welcome to CTM portal</h2>
         <Row xs={1} md={3} className="g-4">
-          {Array.from({ length: 4 }).map((_, idx) => (
+          {Array.from({ length: 3 }).map((_, idx) => (
             <Col>
               <Card
                 key={idx}

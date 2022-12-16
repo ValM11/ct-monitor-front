@@ -10,7 +10,7 @@ import {
 } from "../../Services/inv.services.js";
 
 export default function AEs(props) {
-  let [AEInfo, setAEInfo] = useState({});
+  let [AEInfo, setAEInfo] = useState([]);
 
   useEffect(
     () =>

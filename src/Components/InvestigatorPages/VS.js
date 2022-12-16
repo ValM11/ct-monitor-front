@@ -10,7 +10,7 @@ import {
 } from "../../Services/inv.services.js";
 
 export default function VS(props) {
-  let [VSInfo, setVSInfo] = useState({});
+  let [VSInfo, setVSInfo] = useState([]);
 
   useEffect(
     () =>
@@ -42,14 +42,18 @@ export default function VS(props) {
           <Col>
             <Form.Group className="mb-3">
               <Form.Label>Systolic Blood Pressure (mmHg)</Form.Label>
-              <Form.Control placeholder={VSInfo.age} type="number" name="sbp" />
+              <Form.Control
+                placeholder={VSInfo[0] ? VSInfo[0].sbp : null}
+                type="number"
+                name="sbp"
+              />
             </Form.Group>
           </Col>
           <Col>
             <Form.Group className="mb-3">
               <Form.Label>Diastolic Blood Pressure (mmHg)</Form.Label>
               <Form.Control
-                placeholder={VSInfo.weight}
+                placeholder={VSInfo[0] ? VSInfo[0].dbp : null}
                 type="number"
                 name="dbp"
               />
@@ -59,7 +63,7 @@ export default function VS(props) {
             <Form.Group className="mb-3">
               <Form.Label>Heart Rate (bpm)</Form.Label>
               <Form.Control
-                placeholder={VSInfo.height}
+                placeholder={VSInfo[0] ? VSInfo[0].hr : null}
                 type="number"
                 name="hr"
               />

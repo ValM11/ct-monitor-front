@@ -10,7 +10,7 @@ import {
 } from "../../Services/inv.services.js";
 
 export default function Demo(props) {
-  let [DemoInfo, setDemoInfo] = useState({});
+  let [DemoInfo, setDemoInfo] = useState([]);
 
   useEffect(
     () =>
@@ -22,7 +22,7 @@ export default function Demo(props) {
       ),
     [props.currentPatient, props.currentVisit]
   );
-
+  console.log(DemoInfo[0]);
   return (
     <Container>
       <Form
@@ -44,7 +44,9 @@ export default function Demo(props) {
             <Form.Group className="mb-3">
               <Form.Label>Sex</Form.Label>
               <Form.Select name="sex">
-                <option>{DemoInfo.sex ? "Please select" : DemoInfo.sex}</option>
+                <option>
+                  {DemoInfo[0] ? DemoInfo[0].sex : "Please select"}
+                </option>
                 <option value="F">Female</option>
                 <option value="M">Male</option>
               </Form.Select>
@@ -54,7 +56,7 @@ export default function Demo(props) {
             <Form.Group className="mb-3">
               <Form.Label>Age</Form.Label>
               <Form.Control
-                placeholder={DemoInfo.age}
+                placeholder={DemoInfo[0] ? DemoInfo[0].age : null}
                 type="number"
                 name="age"
               />
@@ -66,7 +68,7 @@ export default function Demo(props) {
             <Form.Group className="mb-3">
               <Form.Label>Weight (kg)</Form.Label>
               <Form.Control
-                placeholder={DemoInfo.weight}
+                placeholder={DemoInfo[0] ? DemoInfo[0].weight : null}
                 type="number"
                 name="weight"
               />
@@ -76,7 +78,7 @@ export default function Demo(props) {
             <Form.Group className="mb-3">
               <Form.Label>Height (cm)</Form.Label>
               <Form.Control
-                placeholder={DemoInfo.height}
+                placeholder={DemoInfo[0] ? DemoInfo[0].height : null}
                 type="number"
                 name="height"
               />

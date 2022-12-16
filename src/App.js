@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-// import logo from './logo.svg';
 import "./App.css";
 import Homepage from "./Components/GlobalPages/Homepage.js";
 import CTM from "./Components/CTMPages/CTM.js";

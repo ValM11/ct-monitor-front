@@ -60,6 +60,7 @@ export function fetchPatientVisit(table, patient, visit, setPatientVisit) {
   fetch(url, requestOptions)
     .then((response) => response.json())
     .then((data) => {
+      console.log(data);
       setPatientVisit(data);
     });
 }

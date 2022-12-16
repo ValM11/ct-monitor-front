@@ -16,6 +16,7 @@ export default function SelectInvStudy(props) {
       {invStudies.map((study) => (
         <ListGroup.Item
           action
+          variant="warning"
           value={study.study_id}
           onClick={(event) => {
             props.setStudy(event.target.value);

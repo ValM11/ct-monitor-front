@@ -16,6 +16,7 @@ export default function CompleteCRF(props) {
 
   return (
     <Container>
+      <h3>Selected study : {props.study}</h3>
       <DropdownButton
         variant="outline-primary"
         title={selectedPatient === "" ? "Select patient" : selectedPatient}
